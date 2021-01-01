@@ -12,7 +12,10 @@ class Breakout:
         self.__level = Level(self)
         self.__level.load(0)
 
-        self.__pad = Pad((0, 0), 0)
+        self.__pad = Pad(
+            (GameConstants.screenSize[0]/2, GameConstants.screenSize[1] - GameConstants.padSize[1]),
+            pygame.image.load(GameConstants.spritePad)
+        )
         self.__balls = [
             Ball((400, 400), pygame.image.load(GameConstants.spriteBall), self)
         ]

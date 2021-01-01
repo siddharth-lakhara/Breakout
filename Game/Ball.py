@@ -8,7 +8,7 @@ class Ball(GameObject):
         self.__speed = 3
         self.__increment = [2, 2]
         self.__direction = [1, 1]
-        self.__inMotion = 1
+        self.__inMotion = 0
 
         super(Ball, self).__init__(position, GameConstants.ballSize, sprite)
 

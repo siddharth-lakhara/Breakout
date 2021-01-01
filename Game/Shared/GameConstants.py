@@ -10,6 +10,7 @@ class GameConstants:
     padSize = [139, 13]
 
     spriteBall = os.path.join("Assets", "img", "ball.png")
+    spritePad = os.path.join("Assets", "img", "pad.png")
     spriteBrick = os.path.join("Assets", "img", "standard.png")
     spriteSpeedBrick = os.path.join("Assets", "img", "speed.png")
     spriteLifeBrick = os.path.join("Assets", "img", "life.png")
