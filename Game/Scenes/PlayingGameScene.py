@@ -12,7 +12,7 @@ class PlayingGameScene(Scene):
         game = self.getGame()
         for ball in game.getBall():
             for brick in game.getLevel().getBricks():
-                if ball.intersects(brick):
+                if not brick.isDestroyed() and ball.intersects(brick):
                     brick.hit()
                     ball.changeDirection(brick)
                     break

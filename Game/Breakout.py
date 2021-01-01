@@ -14,7 +14,7 @@ class Breakout:
 
         self.__pad = Pad((0, 0), 0)
         self.__balls = [
-            Ball((0, 0), pygame.image.load(GameConstants.spriteBall), self)
+            Ball((400, 400), pygame.image.load(GameConstants.spriteBall), self)
         ]
 
         pygame.init()
@@ -38,7 +38,7 @@ class Breakout:
 
     def start(self):
         while True:
-            self.__clock.tick(100)
+            self.__clock.tick(30)
             self.screen.fill((0, 0, 0))
 
             currentScene = self.__scenes[self.__currentScene]
