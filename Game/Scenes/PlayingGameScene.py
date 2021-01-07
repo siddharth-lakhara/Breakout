@@ -11,6 +11,9 @@ class PlayingGameScene(Scene):
         super(PlayingGameScene, self).render()
 
         game = self.getGame()
+
+        if game.getLife() <= 0:
+            game.changeScene(GameConstants.gameOverScene)
         balls = game.getBall()
         pad = game.getPad()
 
@@ -25,6 +28,10 @@ class PlayingGameScene(Scene):
             if ball.intersects(pad):
                 ball.changeDirection(pad)
             ball.updatePosition()
+
+            if ball.isBallDead():
+                ball.setMotion(0)
+                game.reduceLife()
             game.screen.blit(ball.getSprite(), ball.getPosition())
 
         for brick in game.getLevel().getBricks():
