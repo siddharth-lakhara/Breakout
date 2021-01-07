@@ -35,7 +35,7 @@ class Highscore:
         highScoreFilePath = os.path.join("Assets", "highscore.dat")
         f = open(highScoreFilePath, 'w')
         for name, score, md5 in self.__highscore:
-            data = str(name) + '[::]' + str(score) + '[::]' + str(md5)
+            data = str(name) + '[::]' + str(score) + '[::]' + str(md5) + "\n"
             f.write(data)
 
         f.close()

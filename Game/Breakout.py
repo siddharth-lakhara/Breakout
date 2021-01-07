@@ -6,7 +6,7 @@ from Game.Shared import GameConstants
 
 class Breakout:
     def __init__(self):
-        self.__lives = 1
+        self.__lives = 5
         self.__score = 0
 
         self.__level = Level(self)
@@ -37,7 +37,14 @@ class Breakout:
         )
 
         self.__currentScene = 0
-        self.__sounds = ()
+        self.__sounds = (
+            pygame.mixer.Sound(GameConstants.soundFileGameOver),
+            pygame.mixer.Sound(GameConstants.soundFileBrickHit),
+            pygame.mixer.Sound(GameConstants.soundFileLifeBrickHit),
+            pygame.mixer.Sound(GameConstants.soundFileSpeedBrickHit),
+            pygame.mixer.Sound(GameConstants.soundFileWallHit),
+            pygame.mixer.Sound(GameConstants.soundFilePadHit),
+        )
 
     def start(self):
         while True:
@@ -72,7 +79,7 @@ class Breakout:
         return self.__pad
 
     def playSound(self, soundClip):
-        sound = self.self__sounds[soundClip]
+        sound = self.__sounds[soundClip]
 
         sound.stop()
         sound.play()

@@ -1,4 +1,5 @@
 from Game.Bricks import Brick
+from Game.Shared import GameConstants
 
 
 class SpeedBrick(Brick):
@@ -13,3 +14,6 @@ class SpeedBrick(Brick):
             ball.setSpeed(currentSpeed+1)
 
         super(SpeedBrick, self).hit()
+
+    def getHitSound(self):
+        return GameConstants.soundSpeedBrickHit

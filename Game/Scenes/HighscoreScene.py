@@ -16,12 +16,14 @@ class HighscoreScene(Scene):
         x = 350
         y = 100
 
-        for score in highScores:
+        for score in highScores.getScores():
             self.addText(score[0], x, y, size=30)
             self.addText(str(score[0]), x+200, y, size=30)
             y += 30
 
         self.addText("Press Enter to restart the game", x, y+60, size=30)
+
+        super(HighscoreScene, self).render()
 
 
     def handleEvents(self, events):
