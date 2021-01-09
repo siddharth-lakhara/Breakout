@@ -15,6 +15,7 @@ class GameConstants:
     spriteSpeedBrick = os.path.join("Assets", "img", "speed.png")
     spriteLifeBrick = os.path.join("Assets", "img", "life.png")
     spriteHighScore = os.path.join("Assets", "img", "highscore.png")
+    spriteMenu = os.path.join("Assets", "img", "menu.png")
 
     soundFileBrickHit = os.path.join("Assets", "sounds", "BrickHit.wav")
     soundFileLifeBrickHit = os.path.join("Assets", "sounds", "ExtraLife.wav")
@@ -29,7 +30,6 @@ class GameConstants:
     soundSpeedBrickHit = 3
     soundWallHit = 4
     soundPadHit = 5
-
 
     playingScene = 0
     gameOverScene = 1

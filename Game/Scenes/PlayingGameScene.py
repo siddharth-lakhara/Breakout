@@ -6,29 +6,32 @@ from Game.Shared import GameConstants
 class PlayingGameScene(Scene):
     def __init__(self, game):
         super(PlayingGameScene, self).__init__(game)
-        self.__brickHitCount = 0
 
     def render(self):
         super(PlayingGameScene, self).render()
 
         game = self.getGame()
+        level = game.getLevel()
+        balls = game.getBall()
+
+        if level.getAmountOfBricksLeft() <= 0:
+            for ball in balls:
+                ball.setMotion(0)
+
+            level.loadNextLevel()
 
         if game.getLife() <= 0:
             game.playSound(GameConstants.soundGameOver)
             game.changeScene(GameConstants.gameOverScene)
-        balls = game.getBall()
         pad = game.getPad()
-        bricks = game.getLevel().getBricks()
-        if len(bricks) <= self.__brickHitCount:
-        #     Change level
-            print("Level complete")
+        bricks = level.getBricks()
 
         for ball in balls:
             for brick in bricks:
                 if not brick.isDestroyed() and ball.intersects(brick):
                     brick.hit()
+                    level.brickHit()
                     game.playSound(brick.getHitSound())
-                    self.__brickHitCount += 1
                     game.increaseScore(brick.getHitPoints())
                     ball.changeDirection(brick)
                     break
@@ -44,7 +47,7 @@ class PlayingGameScene(Scene):
                 game.reduceLife()
             game.screen.blit(ball.getSprite(), ball.getPosition())
 
-        for brick in game.getLevel().getBricks():
+        for brick in level.getBricks():
             if not brick.isDestroyed():
                 game.screen.blit(brick.getSprite(), brick.getPosition())
 
